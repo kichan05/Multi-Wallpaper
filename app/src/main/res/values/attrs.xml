@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="weight_bg_color" format="color"/>
+    <attr name="bg_color" format="color"/>
+
+    <attr name="txt_color" type="color"/>
+
+    <attr name="btn_main_txt_color" type="color"/>
+    <attr name="btn_main_bg_color" type="color"/>
+
+    <attr name="btn_red_txt_color" type="color"/>
+    <attr name="btn_red_bg_color" type="color"/>
+</resources>

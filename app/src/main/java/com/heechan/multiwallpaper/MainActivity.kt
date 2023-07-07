@@ -2,12 +2,12 @@ package com.heechan.multiwallpaper
 
 import android.app.WallpaperManager
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.marginBottom
+import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
 import androidx.room.Room
 import com.heechan.multiwallpaper.databinding.ActivityMainBinding
@@ -16,7 +16,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.InputStream
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
@@ -42,11 +41,24 @@ class MainActivity : AppCompatActivity() {
         }
 
         updateData()
+        setViewPagerPreView()
     }
 
     override fun onRestart() {
         super.onRestart()
         updateData()
+    }
+
+    private fun setViewPagerPreView() {
+        val dpValue = 16
+        val d = resources.displayMetrics.density
+        val m = (dpValue * d).toInt()
+
+        binding.vpMain.run {
+            clipToPadding = false
+            setPadding(m, 0, m, 0)
+            marginBottom
+        }
     }
 
     private fun updateData() {
