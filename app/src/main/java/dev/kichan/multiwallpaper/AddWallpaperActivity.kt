@@ -1,18 +1,18 @@
-package com.heechan.multiwallpaper
+package dev.kichan.multiwallpaper
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.room.Room
+import com.heechan.membeder.ui.view.dialog.LoadingDialog
+import com.heechan.multiwallpaper.R
 import com.heechan.multiwallpaper.databinding.ActivityAddWallpaperBinding
-import com.heechan.multiwallpaper.model.db.WallpaperDataBase
+import dev.kichan.multiwallpaper.model.db.WallpaperDataBase
 import kotlinx.coroutines.*
 import java.io.InputStream
 
@@ -62,11 +62,18 @@ class AddWallpaperActivity : AppCompatActivity() {
         val name = binding.edtAddWallpaperWallpaperName.text.toString()
         val wallpaper = Wallpaper(wallpaperName = name, wallpaper = selectWallpaper)
 
+
+        val dialog = LoadingDialog().apply {
+            show(supportFragmentManager, "AA")
+        }
+
         CoroutineScope(Dispatchers.IO).launch {
             db.wallpaperDao().insert(wallpaper)
             withContext(Dispatchers.Main) {
-                Toast.makeText(this@AddWallpaperActivity, "저장 완료", Toast.LENGTH_SHORT).show()
+                delay(500)
 
+                dialog.dismiss()
+                Toast.makeText(this@AddWallpaperActivity, "저장 완료", Toast.LENGTH_SHORT).show()
                 finish()
             }
         }

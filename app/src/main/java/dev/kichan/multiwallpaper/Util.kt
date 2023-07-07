@@ -1,4 +1,4 @@
-package com.heechan.multiwallpaper
+package dev.kichan.multiwallpaper
 
 import android.app.Activity
 import android.graphics.Point

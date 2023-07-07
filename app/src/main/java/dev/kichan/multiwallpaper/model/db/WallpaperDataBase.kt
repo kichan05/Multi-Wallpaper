@@ -1,11 +1,11 @@
-package com.heechan.multiwallpaper.model.db
+package dev.kichan.multiwallpaper.model.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.heechan.multiwallpaper.Wallpaper
+import dev.kichan.multiwallpaper.Wallpaper
 
 @Database(
     version = 1,

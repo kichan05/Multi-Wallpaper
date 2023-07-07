@@ -1,4 +1,4 @@
-package com.heechan.multiwallpaper.model.db
+package dev.kichan.multiwallpaper.model.db
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

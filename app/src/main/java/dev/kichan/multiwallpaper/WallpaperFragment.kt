@@ -1,17 +1,15 @@
-package com.heechan.multiwallpaper
+package dev.kichan.multiwallpaper
 
-import android.graphics.Point
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.heechan.multiwallpaper.R
 import com.heechan.multiwallpaper.databinding.FragmentWallpaperBinding
 
-class WallpaperFragment(
-    val wallpaper : Wallpaper
-) : Fragment() {
+class WallpaperFragment(val wallpaper: Wallpaper) : Fragment() {
     lateinit var binding : FragmentWallpaperBinding
 
     override fun onCreateView(
@@ -19,6 +17,8 @@ class WallpaperFragment(
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_wallpaper, container, false)
+
+//        wallpaper = arguments?.getSerializable(KEY_ONBOARD) as Wallpaper
 
         binding.imgMainWallpaper.run {
             setImageBitmap(wallpaper.wallpaper)
@@ -33,4 +33,14 @@ class WallpaperFragment(
         return binding.root
     }
 
+//    companion object{
+//        private const val KEY_ONBOARD = "wallpaper"
+//
+//        @JvmStatic
+//        fun newInstance(wallpaper: Wallpaper) = WallpaperFragment().apply {
+//            arguments = Bundle().apply {
+//                putSerializable(KEY_ONBOARD, wallpaper)
+//            }
+//        }
+//    }
 }

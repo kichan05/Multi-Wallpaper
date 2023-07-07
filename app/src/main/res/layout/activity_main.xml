@@ -10,7 +10,40 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context="dev.kichan.multiwallpaper.MainActivity">
+
+        <LinearLayout
+            android:id="@+id/layout_main_null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical"
+
+            android:gravity="center"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+
+                android:src="@drawable/ic_find"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textFontWeight="600"
+
+                android:text="저장된 배경화면이 없어요\n아래 + 버튼을 눌러서 배경화면을 추가해보세요."
+                />
+        </LinearLayout>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_main"
@@ -27,7 +60,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
-            android:text="배경화면 지정하기"
+            android:text="배경화면으로 설정하기"
+
+            android:layout_marginHorizontal="@dimen/ui_padding_horizontal"
+            android:layout_marginBottom="@dimen/ui_padding_vertical"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,11 +74,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:backgroundTint="@color/blue_300"
+            app:borderWidth="0dp"
+            android:elevation="0dp"
+
             android:src="@drawable/ic_add"
+            android:layout_marginBottom="@dimen/ui_padding_vertical"
 
-            android:layout_margin="12dp"
-
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btn_main_setWallpaper"
             app:layout_constraintBottom_toTopOf="@id/btn_main_setWallpaper"
             />
 

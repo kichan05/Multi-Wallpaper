@@ -1,4 +1,4 @@
-package com.heechan.multiwallpaper
+package dev.kichan.multiwallpaper
 
 import android.app.WallpaperManager
 import android.content.Intent
@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.marginBottom
-import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
 import androidx.room.Room
+import com.heechan.membeder.ui.view.dialog.LoadingDialog
+import com.heechan.multiwallpaper.R
 import com.heechan.multiwallpaper.databinding.ActivityMainBinding
-import com.heechan.multiwallpaper.model.db.WallpaperDataBase
+import dev.kichan.multiwallpaper.model.db.WallpaperDataBase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,25 +26,23 @@ class MainActivity : AppCompatActivity() {
             return@registerForActivityResult
         }
 
-//        val intent = WallpaperManager.getInstance(this).getCropAndSetWallpaperIntent(it)
-
         val intent = Intent(this, AddWallpaperActivity::class.java).apply {
             putExtra(ExtraKey.GET_IMAGE_EXTRA.key, it.toString())
         }
+
         startActivity(intent)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView<ActivityMainBinding?>(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
             .apply {
                 btnMainSetWallpaper.setOnClickListener(clickSetWallpaper)
                 btnMainAddWallpaper.setOnClickListener(clickAddWallpaper)
             }
 
         updateData()
-//        setViewPagerPreView()
     }
 
     override fun onRestart() {
@@ -78,8 +76,12 @@ class MainActivity : AppCompatActivity() {
                     return@withContext
                 }
 
+                binding.layoutMainNull.visibility = View.GONE
+
                 binding.vpMain.adapter =
-                    ViewPagerAdapter(this@MainActivity, wallpaperData.map { WallpaperFragment(it) })
+                    ViewPagerAdapter(
+                        this@MainActivity,
+                        wallpaperData.map { WallpaperFragment(it) })
             }
         }
     }
@@ -88,6 +90,15 @@ class MainActivity : AppCompatActivity() {
         val wallpaperIndex = binding.vpMain.currentItem
 
         WallpaperManager.getInstance(this).setBitmap(wallpaperData[wallpaperIndex].wallpaper)
+
+        val dialog = LoadingDialog().apply {
+            show(supportFragmentManager, "AA")
+        }
+        dialog.dismiss()
+
+        val launcher = Intent(Intent.ACTION_MAIN)
+        launcher.addCategory(Intent.CATEGORY_HOME)
+        startActivity(launcher)
     }
 
     private val clickAddWallpaper: (View) -> Unit = { v ->

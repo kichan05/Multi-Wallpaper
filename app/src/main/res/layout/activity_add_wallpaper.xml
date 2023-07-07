@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".AddWallpaperActivity">
+        tools:context="dev.kichan.multiwallpaper.AddWallpaperActivity">
 
 
         <ImageView
@@ -35,13 +35,14 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/ui_padding_horizontal"
             android:layout_marginTop="20dp"
-            android:hint="배경화면의 이름을 입력해주세요"
 
-            android:singleLine="false"
+
+            android:hint="배경화면의 이름을 입력해주세요"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_addWallpaper_preview" />
+
 
         <Button
             android:id="@+id/btn_addWallpaper_save"
