@@ -19,8 +19,7 @@ import java.io.InputStream
 class AddWallpaperActivity : AppCompatActivity() {
     private lateinit var db: WallpaperDataBase
     private lateinit var binding: ActivityAddWallpaperBinding
-    var selectWallpaper: Bitmap? = null
-
+    lateinit var selectWallpaper: Bitmap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,13 +39,21 @@ class AddWallpaperActivity : AppCompatActivity() {
         showUi()
     }
 
-    private fun showUi(){
-        val it : String = intent.getStringExtra(ExtraKey.GET_IMAGE_EXTRA.key)!!
+    private fun showUi() {
+        val it: String = intent.getStringExtra(ExtraKey.GET_IMAGE_EXTRA.key)!!
         val uri = Uri.parse(it)
 
         val inputStream: InputStream = contentResolver.openInputStream(uri)!!
         selectWallpaper = BitmapFactory.decodeStream(inputStream)
-        binding.imgAddWallpaperPreview.setImageBitmap(selectWallpaper)
+
+        binding.imgAddWallpaperPreview.run {
+            setImageBitmap(selectWallpaper)
+            clipToOutline = true
+
+            val previewSize = Util.getPreViewImageSize(this@AddWallpaperActivity, 150)
+            layoutParams.width = previewSize.x
+            layoutParams.height = previewSize.y
+        }
 
         inputStream.close()
     }

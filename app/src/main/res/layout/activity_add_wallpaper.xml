@@ -15,40 +15,44 @@
 
         <ImageView
             android:id="@+id/img_addWallpaper_preview"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="220dp"
+            android:layout_height="400dp"
+            android:background="@drawable/sh_phone_preview"
+            android:scaleType="centerCrop"
 
             android:src="@drawable/ryo"
-
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/edt_addWallpaper_wallpaperName"
             app:layout_constraintEnd_toEndOf="parent"
 
-            app:layout_constraintHeight_percent="0.6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2" />
+            app:layout_constraintVertical_bias="0.3"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <EditText
             android:id="@+id/edt_addWallpaper_wallpaperName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/ui_padding_horizontal"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
 
-            app:layout_constraintTop_toBottomOf="@+id/img_addWallpaper_preview"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_addWallpaper_preview" />
 
         <Button
             android:id="@+id/btn_addWallpaper_save"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/ui_padding_horizontal"
+            android:layout_marginBottom="@dimen/ui_padding_vertical"
 
             android:text="저장"
 
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

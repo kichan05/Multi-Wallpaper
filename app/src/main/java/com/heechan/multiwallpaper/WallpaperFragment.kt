@@ -24,7 +24,7 @@ class WallpaperFragment(
             setImageBitmap(wallpaper.wallpaper)
             clipToOutline = true
 
-            val previewSize = getPreViewImageSize()
+            val previewSize = Util.getPreViewImageSize(requireActivity(), 90)
             layoutParams.width = previewSize.x
             layoutParams.height = previewSize.y
         }
@@ -33,14 +33,4 @@ class WallpaperFragment(
         return binding.root
     }
 
-    private fun getPreViewImageSize() : Point {
-        val display = requireActivity().windowManager.defaultDisplay
-        val size = Point()
-        display.getSize(size) // or getSize(size)
-
-        val width = size.x - 90 * 2
-        val height = size.y * width / size.x
-
-        return Point(width, height)
-    }
 }
