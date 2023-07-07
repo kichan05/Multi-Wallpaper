@@ -2,6 +2,7 @@ package com.heechan.multiwallpaper
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -20,17 +21,6 @@ class AddWallpaperActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddWallpaperBinding
     var selectWallpaper: Bitmap? = null
 
-    private val getImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
-        if (it == null) {
-            return@registerForActivityResult
-        }
-
-        binding.imgAddWallpaperPreview.setImageURI(it)
-
-        val inputStream: InputStream = contentResolver.openInputStream(it)!!
-        selectWallpaper = BitmapFactory.decodeStream(inputStream)
-        inputStream.close()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,17 +36,22 @@ class AddWallpaperActivity : AppCompatActivity() {
             WallpaperDataBase::class.java,
             WallpaperDataBase.dbName
         ).build()
+
+        showUi()
     }
 
-    override fun onStart() {
-        super.onStart()
-        if (selectWallpaper == null) {
-            getImage.launch("image/*")
-            Log.d("gotoGallery", "간닷")
-        }
+    private fun showUi(){
+        val it : String = intent.getStringExtra(ExtraKey.GET_IMAGE_EXTRA.key)!!
+        val uri = Uri.parse(it)
+
+        val inputStream: InputStream = contentResolver.openInputStream(uri)!!
+        selectWallpaper = BitmapFactory.decodeStream(inputStream)
+        binding.imgAddWallpaperPreview.setImageBitmap(selectWallpaper)
+
+        inputStream.close()
     }
 
-    val clickSaveWallpaper: (View) -> Unit = { v ->
+    private val clickSaveWallpaper: (View) -> Unit = { v ->
         val name = binding.edtAddWallpaperWallpaperName.text.toString()
         val wallpaper = Wallpaper(wallpaperName = name, wallpaper = selectWallpaper)
 

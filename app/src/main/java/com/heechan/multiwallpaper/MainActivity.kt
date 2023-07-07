@@ -2,9 +2,11 @@ package com.heechan.multiwallpaper
 
 import android.app.WallpaperManager
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.room.Room
@@ -14,16 +16,27 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.InputStream
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
-    var wallpaperData : MutableList<Wallpaper> = mutableListOf()
+    private lateinit var binding : ActivityMainBinding
+    private var wallpaperData : MutableList<Wallpaper> = mutableListOf()
+
+    private val getImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        if (it == null) {
+            return@registerForActivityResult
+        }
+
+        val intent = Intent(this, AddWallpaperActivity::class.java).apply {
+            putExtra(ExtraKey.GET_IMAGE_EXTRA.key, it.toString())
+        }
+        startActivity(intent)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView<ActivityMainBinding?>(this, R.layout.activity_main).apply {
-            vpMain.adapter = ViewPagerAdapter(this@MainActivity, wallpaperData.map { WallpaperFragment(it) })
             btnMainSetWallpaper.setOnClickListener(clickSetWallpaper)
             btnMainAddWallpaper.setOnClickListener(clickAddWallpaper)
         }
@@ -46,8 +59,6 @@ class MainActivity : AppCompatActivity() {
 
             val result = db.wallpaperDao().getAll()
 
-            Log.d("Result", result.toString())
-
             withContext(Dispatchers.Main){
                 wallpaperData.clear()
                 wallpaperData.addAll(result)
@@ -68,7 +79,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val clickAddWallpaper: (View) -> Unit = { v ->
-        val intent = Intent(this, AddWallpaperActivity::class.java)
-        startActivity(intent)
+        getImage.launch("image/*")
     }
 }
