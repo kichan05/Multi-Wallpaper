@@ -1,40 +1,68 @@
 package com.heechan.multiwallpaper
 
-import android.content.ContentResolver
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.room.Room
 import com.heechan.multiwallpaper.databinding.ActivityAddWallpaperBinding
+import com.heechan.multiwallpaper.model.db.WallpaperDataBase
+import kotlinx.coroutines.*
+import java.io.InputStream
 
 class AddWallpaperActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityAddWallpaperBinding
+    private lateinit var db : WallpaperDataBase
+
+    private lateinit var binding: ActivityAddWallpaperBinding
 
     var count = 0;
+    lateinit var selectWallpaper: Bitmap
 
     val getImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
-        if(it == null){
+        if (it == null) {
             return@registerForActivityResult
         }
 
         binding.imgAddWallpaperPreview.setImageURI(it)
 
-//        val inputStream = contentResolver.openInputStream(it) ?: return@registerForActivityResult
-//        val bitmap = BitmapFactory.decodeStream(inputStream)
-//        inputStream.close()
+        val inputStream: InputStream = contentResolver.openInputStream(it)!!
+        selectWallpaper = BitmapFactory.decodeStream(inputStream)
+        inputStream.close()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_add_wallpaper)
+        binding = DataBindingUtil.setContentView<ActivityAddWallpaperBinding?>(this, R.layout.activity_add_wallpaper).apply {
+            btnAddWallpaperSave.setOnClickListener(clickSaveWallpaper)
+        }
+        db = Room.databaseBuilder(
+            applicationContext,
+            WallpaperDataBase::class.java,
+            WallpaperDataBase.dbName
+        ).build()
+    }
+
+    val clickSaveWallpaper: (View) -> Unit = { v ->
+        val name = binding.edtAddWallpaperWallpaperName.text.toString()
+        val wallpaper = Wallpaper(wallpaperName = name, wallpaper = selectWallpaper)
+
+        CoroutineScope(Dispatchers.IO).launch {
+            db.wallpaperDao().insert(wallpaper)
+            withContext(Dispatchers.Main) {
+                Toast.makeText(this@AddWallpaperActivity, "저장 완료", Toast.LENGTH_SHORT).show()
+
+                finish()
+            }
+        }
     }
 
     override fun onStart() {
         super.onStart()
-        if(count == 0){
+        if (count == 0) {
             getImage.launch("image/*")
             count += 1
         }

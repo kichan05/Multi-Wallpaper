@@ -20,7 +20,7 @@ class WallpaperFragment(
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_wallpaper, container, false)
 
         binding.apply {
-            imgMainWallpaper.setImageResource(wallpaper.imageDrawable)
+            imgMainWallpaper.setImageBitmap(wallpaper.wallpaper)
             txtMainWallpaperName.text = wallpaper.wallpaperName
         }
 
