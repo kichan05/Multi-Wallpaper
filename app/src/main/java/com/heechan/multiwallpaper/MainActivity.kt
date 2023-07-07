@@ -18,13 +18,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityMainBinding
-    private var wallpaperData : MutableList<Wallpaper> = mutableListOf()
+    private lateinit var binding: ActivityMainBinding
+    private var wallpaperData: MutableList<Wallpaper> = mutableListOf()
 
     private val getImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
         if (it == null) {
             return@registerForActivityResult
         }
+
+//        val intent = WallpaperManager.getInstance(this).getCropAndSetWallpaperIntent(it)
 
         val intent = Intent(this, AddWallpaperActivity::class.java).apply {
             putExtra(ExtraKey.GET_IMAGE_EXTRA.key, it.toString())
@@ -35,13 +37,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView<ActivityMainBinding?>(this, R.layout.activity_main).apply {
-            btnMainSetWallpaper.setOnClickListener(clickSetWallpaper)
-            btnMainAddWallpaper.setOnClickListener(clickAddWallpaper)
-        }
+        binding = DataBindingUtil.setContentView<ActivityMainBinding?>(this, R.layout.activity_main)
+            .apply {
+                btnMainSetWallpaper.setOnClickListener(clickSetWallpaper)
+                btnMainAddWallpaper.setOnClickListener(clickAddWallpaper)
+            }
 
         updateData()
-        setViewPagerPreView()
+//        setViewPagerPreView()
     }
 
     override fun onRestart() {
@@ -49,15 +52,11 @@ class MainActivity : AppCompatActivity() {
         updateData()
     }
 
-    private fun setViewPagerPreView() {
-        val dpValue = 16
-        val d = resources.displayMetrics.density
-        val m = (dpValue * d).toInt()
-
-        binding.vpMain.run {
-            clipToPadding = false
-            setPadding(m, 0, m, 0)
-            marginBottom
+    private fun setViewPagerPreView() = binding.vpMain.run {
+        clipToPadding = false
+        setPageTransformer { page, position ->
+            page.translationX = -(40 * position)
+            page.scaleY = 1 - (0.25f * kotlin.math.abs(position))
         }
     }
 
@@ -71,15 +70,16 @@ class MainActivity : AppCompatActivity() {
 
             val result = db.wallpaperDao().getAll()
 
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 wallpaperData.clear()
                 wallpaperData.addAll(result)
 
-                if(wallpaperData.size == 0){
+                if (wallpaperData.size == 0) {
                     return@withContext
                 }
 
-                binding.vpMain.adapter = ViewPagerAdapter(this@MainActivity, wallpaperData.map { WallpaperFragment(it) })
+                binding.vpMain.adapter =
+                    ViewPagerAdapter(this@MainActivity, wallpaperData.map { WallpaperFragment(it) })
             }
         }
     }

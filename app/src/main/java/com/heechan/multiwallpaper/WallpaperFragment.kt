@@ -1,5 +1,6 @@
 package com.heechan.multiwallpaper
 
+import android.graphics.Point
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,11 +20,27 @@ class WallpaperFragment(
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_wallpaper, container, false)
 
-        binding.apply {
-            imgMainWallpaper.setImageBitmap(wallpaper.wallpaper)
-            txtMainWallpaperName.text = wallpaper.wallpaperName
+        binding.imgMainWallpaper.run {
+            setImageBitmap(wallpaper.wallpaper)
+            clipToOutline = true
+
+            val previewSize = getPreViewImageSize()
+            layoutParams.width = previewSize.x
+            layoutParams.height = previewSize.y
         }
+        binding.txtMainWallpaperName.text = wallpaper.wallpaperName
 
         return binding.root
+    }
+
+    private fun getPreViewImageSize() : Point {
+        val display = requireActivity().windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size) // or getSize(size)
+
+        val width = size.x - 90 * 2
+        val height = size.y * width / size.x
+
+        return Point(width, height)
     }
 }
