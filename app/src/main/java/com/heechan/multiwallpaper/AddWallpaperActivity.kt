@@ -3,6 +3,7 @@ package com.heechan.multiwallpaper
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -15,14 +16,11 @@ import kotlinx.coroutines.*
 import java.io.InputStream
 
 class AddWallpaperActivity : AppCompatActivity() {
-    private lateinit var db : WallpaperDataBase
-
+    private lateinit var db: WallpaperDataBase
     private lateinit var binding: ActivityAddWallpaperBinding
+    var selectWallpaper: Bitmap? = null
 
-    var count = 0;
-    lateinit var selectWallpaper: Bitmap
-
-    val getImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
+    private val getImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
         if (it == null) {
             return@registerForActivityResult
         }
@@ -36,14 +34,26 @@ class AddWallpaperActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<ActivityAddWallpaperBinding?>(this, R.layout.activity_add_wallpaper).apply {
+        binding = DataBindingUtil.setContentView<ActivityAddWallpaperBinding?>(
+            this,
+            R.layout.activity_add_wallpaper
+        ).apply {
             btnAddWallpaperSave.setOnClickListener(clickSaveWallpaper)
         }
+
         db = Room.databaseBuilder(
             applicationContext,
             WallpaperDataBase::class.java,
             WallpaperDataBase.dbName
         ).build()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (selectWallpaper == null) {
+            getImage.launch("image/*")
+            Log.d("gotoGallery", "간닷")
+        }
     }
 
     val clickSaveWallpaper: (View) -> Unit = { v ->
@@ -59,13 +69,4 @@ class AddWallpaperActivity : AppCompatActivity() {
             }
         }
     }
-
-    override fun onStart() {
-        super.onStart()
-        if (count == 0) {
-            getImage.launch("image/*")
-            count += 1
-        }
-    }
-
 }
