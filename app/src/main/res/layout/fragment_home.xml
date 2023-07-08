@@ -37,8 +37,8 @@
                 android:layout_height="wrap_content"
 
                 android:gravity="center"
-                android:text="저장된 배경화면이 없어요\n아래 + 버튼을 눌러서 배경화면을 추가해보세요."
-                android:textFontWeight="600"
+                android:text="저장된 배경화면이 없어요\n아래 + 버튼을 눌러서\n배경화면을 추가해보세요."
+                android:textFontWeight="200"
 
                 android:textSize="20sp" />
         </LinearLayout>
@@ -71,12 +71,47 @@
             android:id="@+id/btn_main_addWallpaper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/white"
+
+            android:elevation="0dp"
+            android:src="@drawable/ic_add"
+
+            android:tint="@color/black"
+            android:visibility="invisible"
+            app:borderWidth="0dp"
+
+            app:layout_constraintBottom_toTopOf="@id/btn_main_deleteWallpaper"
+            app:layout_constraintEnd_toEndOf="@id/btn_main_deleteWallpaper" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_main_deleteWallpaper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/white"
+
+            android:elevation="0dp"
+            android:src="@drawable/ic_trash_bin"
+
+            android:tint="@color/black"
+            android:visibility="invisible"
+            app:borderWidth="0dp"
+
+            app:layout_constraintBottom_toTopOf="@id/btn_main_openOption"
+            app:layout_constraintEnd_toEndOf="@id/btn_main_openOption" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_main_openOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
             android:layout_marginBottom="@dimen/ui_padding_vertical"
             android:backgroundTint="@color/blue_300"
             android:elevation="0dp"
+            android:src="@drawable/ic_option"
 
-            android:src="@drawable/ic_add"
+            android:tint="#252525"
             app:borderWidth="0dp"
 
             app:layout_constraintBottom_toTopOf="@id/btn_main_setWallpaper"
