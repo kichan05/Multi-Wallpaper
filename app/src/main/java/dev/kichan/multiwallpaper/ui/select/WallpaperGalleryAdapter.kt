@@ -6,25 +6,28 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.kichan.multiwallpaper.databinding.RowWallpaperGalleryBinding
 import dev.kichan.multiwallpaper.model.data.Wallpaper
 
-class WallpaperGalleryAdapter(val items : List<Wallpaper>, val itemClickListener: (Int) -> Unit) : RecyclerView.Adapter<WallpaperGalleryViewHolder>() {
-    var selectItemIndex : Int? = null
+class WallpaperGalleryAdapter(
+    val items: List<Wallpaper>,
+    val itemClickListener: (Int) -> Unit,
+    private val imageSize: Int
+) : RecyclerView.Adapter<WallpaperGalleryViewHolder>() {
+    var selectItemIndex: Int? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WallpaperGalleryViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val row = RowWallpaperGalleryBinding.inflate(layoutInflater, parent, false)
-        return WallpaperGalleryViewHolder(row)
+        return WallpaperGalleryViewHolder(row, imageSize)
     }
 
     override fun onBindViewHolder(holder: WallpaperGalleryViewHolder, position: Int) {
         holder.row.root.setOnClickListener {
-            if(selectItemIndex != null){
+            if (selectItemIndex != null) {
                 itemClickListener(selectItemIndex!!)
             }
 
-            if(position == selectItemIndex){
+            if (position == selectItemIndex) {
                 selectItemIndex = null
-            }
-            else{
+            } else {
                 selectItemIndex = position
                 holder.row.ckGalleryItem.isChecked = true
             }
@@ -32,7 +35,7 @@ class WallpaperGalleryAdapter(val items : List<Wallpaper>, val itemClickListener
         holder.onBind(items[position])
     }
 
-    fun getSelectItem() : Wallpaper = items[selectItemIndex!!]
+    fun getSelectItem(): Wallpaper = items[selectItemIndex!!]
 
     override fun getItemCount(): Int = items.size
 }

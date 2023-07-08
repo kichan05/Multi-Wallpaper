@@ -2,6 +2,7 @@ package dev.kichan.multiwallpaper.ui.select
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Point
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.room.Room
@@ -70,7 +71,11 @@ class SelectWallpaperActivity :
                     return@withContext
                 }
 
-                galleryAdapter = WallpaperGalleryAdapter(wallpaperData, clickGalleryItem)
+                val display = windowManager.defaultDisplay
+                val size = Point()
+                display.getSize(size)
+
+                galleryAdapter = WallpaperGalleryAdapter(wallpaperData, clickGalleryItem, size.x / 3)
                 binding.listSelectWallpaper.adapter = galleryAdapter
             }
         }

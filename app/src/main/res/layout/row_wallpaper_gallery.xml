@@ -15,29 +15,26 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
 
-            android:src="@drawable/ryo"
-            android:adjustViewBounds="true"
-
             android:scaleType="centerCrop"
 
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ryo"
+
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <CheckBox
             android:id="@+id/ck_galleryItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:buttonTint="@color/blue_600"
             android:clickable="false"
+
             android:focusable="false"
 
-            android:buttonTint="@color/blue_600"
-
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
