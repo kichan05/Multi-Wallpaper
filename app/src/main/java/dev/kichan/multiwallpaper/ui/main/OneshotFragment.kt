@@ -2,39 +2,95 @@ package dev.kichan.multiwallpaper.ui.main
 
 import android.app.Activity
 import android.content.Intent
-import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.room.Room
 import dev.kichan.multiwallpaper.BaseFragment
 import dev.kichan.multiwallpaper.ExtraKey
 import dev.kichan.multiwallpaper.R
 import dev.kichan.multiwallpaper.databinding.FragmentOneshotBinding
-import dev.kichan.multiwallpaper.ui.SelectWallpaperActivity
+import dev.kichan.multiwallpaper.model.data.Wallpaper
+import dev.kichan.multiwallpaper.model.db.WallpaperDataBase
+import dev.kichan.multiwallpaper.ui.select.SelectWallpaperActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class OneshotFragment : BaseFragment<FragmentOneshotBinding>(R.layout.fragment_oneshot) {
+    private lateinit var db: WallpaperDataBase
+    private var oneshotList = listOf<Wallpaper>()
+
+    var choiceOneshotIndex: Int? = null
+
     val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             if (result.resultCode == Activity.RESULT_OK && result.data != null) {
                 val selectWallpaperId =
-                    result.data!!.getSerializableExtra(ExtraKey.SELECT_WALLPAPER.key)
-                        ?: return@registerForActivityResult
+                    result.data!!.getIntExtra(ExtraKey.SELECT_WALLPAPER.key, -1)
 
-                Log.d("Result", selectWallpaperId.toString())
+                if(selectWallpaperId == -1){
+                    return@registerForActivityResult
+                }
+                Log.d("result", "선택 : $selectWallpaperId")
+                saveOneshot(selectWallpaperId, choiceOneshotIndex!!)
             }
         }
 
     override fun onStart() {
         super.onStart()
+        db = Room.databaseBuilder(
+            requireContext(),
+            WallpaperDataBase::class.java,
+            WallpaperDataBase.dbName
+        ).build()
+
+        update()
+
         binding.run {
-            btnOneShotGetWallpaper.setOnClickListener {
-                val intent = Intent(context, SelectWallpaperActivity::class.java)
-                startForResult.launch(intent)
+            btnOneShotOneShot1.setOnClickListener {
+                setOneshot(1)
             }
+
+            btnOneShotOneShot2.setOnClickListener {
+                setOneshot(2)
+            }
+            btnOneShotOneShot3.setOnClickListener {
+                setOneshot(3)
+            }
+            btnOneShotOneShot4.setOnClickListener {
+                setOneshot(4)
+            }
+        }
+    }
+
+    private fun update() {
+       CoroutineScope(Dispatchers.IO).launch {
+           db.wallpaperDao().getOneShot().forEach {
+               Log.d("Result", it.toString())
+           }
+       }
+    }
+
+    private fun setOneshot(oneshotIndex: Int) {
+        choiceOneshotIndex = oneshotIndex
+
+        val intent = Intent(context, SelectWallpaperActivity::class.java)
+        startForResult.launch(intent)
+    }
+
+    private fun saveOneshot(wallpaperIndex: Int, oneshotIndex: Int) {
+//        val dialog = LoadingDialog().apply {
+//            show(childFragmentManager, "Loading")
+//        }
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val wallpaper = db.wallpaperDao().getWallpaper(wallpaperIndex)?.apply {
+                oneShot = oneshotIndex
+            } ?: return@launch
+
+            db.wallpaperDao().update(wallpaper)
+            update()
         }
     }
 }

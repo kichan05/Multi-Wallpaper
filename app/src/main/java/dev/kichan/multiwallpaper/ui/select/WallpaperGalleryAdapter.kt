@@ -1,6 +1,5 @@
-package dev.kichan.multiwallpaper.ui
+package dev.kichan.multiwallpaper.ui.select
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -18,8 +17,6 @@ class WallpaperGalleryAdapter(val items : List<Wallpaper>, val itemClickListener
 
     override fun onBindViewHolder(holder: WallpaperGalleryViewHolder, position: Int) {
         holder.row.root.setOnClickListener {
-            Log.d("CLick", "Click ${position}")
-
             if(selectItemIndex != null){
                 itemClickListener(selectItemIndex!!)
             }
@@ -34,6 +31,8 @@ class WallpaperGalleryAdapter(val items : List<Wallpaper>, val itemClickListener
         }
         holder.onBind(items[position])
     }
+
+    fun getSelectItem() : Wallpaper = items[selectItemIndex!!]
 
     override fun getItemCount(): Int = items.size
 }

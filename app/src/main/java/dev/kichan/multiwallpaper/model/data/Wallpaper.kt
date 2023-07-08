@@ -20,7 +20,9 @@ data class Wallpaper(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     var wallpaper: Bitmap? = null,
     @ColumnInfo("create_time_stamp")
-    val createTimeStamp: String = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+    val createTimeStamp: String = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
+    @ColumnInfo("one_shot")
+    var oneShot : Int? = null
 //    @ColumnInfo("wallpaper_name")
 //    val wallpaperName: String,
 ) : Serializable {

@@ -1,4 +1,4 @@
-package dev.kichan.multiwallpaper.ui
+package dev.kichan.multiwallpaper.ui.select
 
 import android.app.Activity
 import android.content.Intent
@@ -10,9 +10,7 @@ import dev.kichan.multiwallpaper.ExtraKey
 import dev.kichan.multiwallpaper.R
 import dev.kichan.multiwallpaper.databinding.ActivitySelectWallpaperBinding
 import dev.kichan.multiwallpaper.model.data.Wallpaper
-import dev.kichan.multiwallpaper.model.db.WallpaperDBTypeConverter
 import dev.kichan.multiwallpaper.model.db.WallpaperDataBase
-import dev.kichan.multiwallpaper.ui.main.WallpaperFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,7 +26,7 @@ class SelectWallpaperActivity :
 
         binding.run {
             btnSelectWallpaperSelect.setOnClickListener(clickSelectWallpaper)
-            listSelectWallpaper.layoutManager = GridLayoutManager(this@SelectWallpaperActivity, 2)
+            listSelectWallpaper.layoutManager = GridLayoutManager(this@SelectWallpaperActivity, 3)
         }
 
         updateData()
@@ -45,7 +43,7 @@ class SelectWallpaperActivity :
             val selectWallpaperId = galleryAdapter.selectItemIndex
             if (selectWallpaperId != null) {
                 val intent = Intent().apply {
-                    putExtra(ExtraKey.SELECT_WALLPAPER.key, selectWallpaperId)
+                    putExtra(ExtraKey.SELECT_WALLPAPER.key, galleryAdapter.getSelectItem().id)
                 }
 
                 setResult(Activity.RESULT_OK, intent)

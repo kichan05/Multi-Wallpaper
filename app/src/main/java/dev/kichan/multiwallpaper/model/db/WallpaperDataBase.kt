@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 import dev.kichan.multiwallpaper.model.data.Wallpaper
 
 @Database(
-    version = 2,
+    version = 4,
     entities = [Wallpaper::class]
 )
 @TypeConverters(WallpaperDBTypeConverter::class)

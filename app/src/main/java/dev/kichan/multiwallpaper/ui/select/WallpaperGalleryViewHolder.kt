@@ -1,4 +1,4 @@
-package dev.kichan.multiwallpaper.ui
+package dev.kichan.multiwallpaper.ui.select
 
 import androidx.recyclerview.widget.RecyclerView
 import dev.kichan.multiwallpaper.databinding.RowWallpaperGalleryBinding
