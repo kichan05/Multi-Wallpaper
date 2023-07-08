@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import dev.kichan.multiwallpaper.Wallpaper
+import dev.kichan.multiwallpaper.ui.main.Wallpaper
 
 @Database(
     version = 1,

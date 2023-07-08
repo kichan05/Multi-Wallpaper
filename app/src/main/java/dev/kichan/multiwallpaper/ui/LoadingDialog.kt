@@ -1,4 +1,4 @@
-package com.heechan.membeder.ui.view.dialog
+package dev.kichan.multiwallpaper.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

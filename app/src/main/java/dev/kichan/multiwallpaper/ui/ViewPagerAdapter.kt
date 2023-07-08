@@ -1,8 +1,9 @@
-package dev.kichan.multiwallpaper
+package dev.kichan.multiwallpaper.ui
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import dev.kichan.multiwallpaper.ui.main.WallpaperFragment
 
 class ViewPagerAdapter(
     fm: FragmentActivity,

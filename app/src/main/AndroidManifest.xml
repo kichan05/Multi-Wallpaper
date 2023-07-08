@@ -15,7 +15,7 @@
         android:theme="@style/Theme.MultiWallpaper"
         tools:targetApi="31">
         <activity
-            android:name=".AddWallpaperActivity"
+            android:name=".ui.addWallpaper.AddWallpaperActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize">
             <meta-data
@@ -23,7 +23,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

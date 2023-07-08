@@ -1,9 +1,9 @@
-package dev.kichan.multiwallpaper
+package dev.kichan.multiwallpaper.ui
 
 import android.app.Activity
 import android.graphics.Point
 
-object Util {
+object UiUtill {
     fun getPreViewImageSize(activity : Activity, padding : Int) : Point {
         val display = activity.windowManager.defaultDisplay
         val size = Point()

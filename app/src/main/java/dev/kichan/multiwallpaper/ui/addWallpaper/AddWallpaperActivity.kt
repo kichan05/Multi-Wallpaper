@@ -1,4 +1,4 @@
-package dev.kichan.multiwallpaper
+package dev.kichan.multiwallpaper.ui.addWallpaper
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -9,7 +9,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.room.Room
-import com.heechan.membeder.ui.view.dialog.LoadingDialog
+import dev.kichan.multiwallpaper.ui.LoadingDialog
+import dev.kichan.multiwallpaper.ExtraKey
+import dev.kichan.multiwallpaper.R
+import dev.kichan.multiwallpaper.ui.UiUtill
+import dev.kichan.multiwallpaper.ui.main.Wallpaper
 import dev.kichan.multiwallpaper.databinding.ActivityAddWallpaperBinding
 import dev.kichan.multiwallpaper.model.db.WallpaperDataBase
 import kotlinx.coroutines.*
@@ -49,7 +53,7 @@ class AddWallpaperActivity : AppCompatActivity() {
             setImageBitmap(selectWallpaper)
             clipToOutline = true
 
-            val previewSize = Util.getPreViewImageSize(this@AddWallpaperActivity, 150)
+            val previewSize = UiUtill.getPreViewImageSize(this@AddWallpaperActivity, 150)
             layoutParams.width = previewSize.x
             layoutParams.height = previewSize.y
         }

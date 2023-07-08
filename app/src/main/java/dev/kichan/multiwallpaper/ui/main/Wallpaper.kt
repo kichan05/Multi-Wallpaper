@@ -1,4 +1,4 @@
-package dev.kichan.multiwallpaper
+package dev.kichan.multiwallpaper.ui.main
 
 import android.content.Context
 import android.graphics.Bitmap
