@@ -5,14 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import dev.kichan.multiwallpaper.ui.main.Wallpaper
+import dev.kichan.multiwallpaper.model.data.Wallpaper
 
 @Database(
-    version = 1,
+    version = 2,
     entities = [Wallpaper::class]
 )
 @TypeConverters(WallpaperDBTypeConverter::class)
-abstract class WallpaperDataBase() : RoomDatabase() {
+abstract class WallpaperDataBase : RoomDatabase() {
     abstract fun wallpaperDao() : WallpaperDBDao
 
     companion object {

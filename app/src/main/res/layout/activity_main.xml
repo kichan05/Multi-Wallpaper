@@ -29,7 +29,7 @@
 
             app:menu="@menu/menu_main"
 
-            android:background="@color/white"
+            android:background="?attr/weight_bg_color"
             app:itemIconTint="@drawable/se_main_bnv_color"
             app:itemTextColor="@drawable/se_main_bnv_color"
             app:labelVisibilityMode="labeled"

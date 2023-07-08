@@ -13,6 +13,7 @@
 
     <attr name="btn_red_txt_color" type="color" />
     <attr name="btn_red_bg_color" type="color" />
+
     <declare-styleable name="AppWidgetAttrs">
         <attr name="appWidgetPadding" format="dimension" />
         <attr name="appWidgetInnerRadius" format="dimension" />

@@ -15,6 +15,7 @@ import dev.kichan.multiwallpaper.ExtraKey
 import dev.kichan.multiwallpaper.R
 import dev.kichan.multiwallpaper.databinding.ActivityMainBinding
 import dev.kichan.multiwallpaper.databinding.FragmentHomeBinding
+import dev.kichan.multiwallpaper.model.data.Wallpaper
 import dev.kichan.multiwallpaper.model.db.WallpaperDataBase
 import dev.kichan.multiwallpaper.ui.LoadingDialog
 import dev.kichan.multiwallpaper.ui.ViewPagerAdapter

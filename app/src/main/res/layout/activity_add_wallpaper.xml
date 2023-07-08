@@ -21,28 +21,12 @@
             android:scaleType="centerCrop"
 
             android:src="@drawable/ryo"
-            app:layout_constraintBottom_toTopOf="@id/edt_addWallpaper_wallpaperName"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.3"
             app:layout_constraintVertical_chainStyle="packed" />
-
-        <EditText
-            android:id="@+id/edt_addWallpaper_wallpaperName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/ui_padding_horizontal"
-            android:layout_marginTop="20dp"
-
-
-            android:hint="배경화면의 이름을 입력해주세요"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_addWallpaper_preview" />
-
 
         <Button
             android:id="@+id/btn_addWallpaper_save"

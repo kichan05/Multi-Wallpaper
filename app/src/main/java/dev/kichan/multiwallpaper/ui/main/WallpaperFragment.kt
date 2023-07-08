@@ -1,6 +1,7 @@
 package dev.kichan.multiwallpaper.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,12 @@ import androidx.databinding.DataBindingUtil
 import dev.kichan.multiwallpaper.R
 import dev.kichan.multiwallpaper.ui.UiUtil
 import dev.kichan.multiwallpaper.databinding.FragmentWallpaperBinding
+import dev.kichan.multiwallpaper.model.data.Wallpaper
+import java.text.Format
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatterBuilder
 
 class WallpaperFragment(val wallpaper: Wallpaper) : Fragment() {
     lateinit var binding : FragmentWallpaperBinding
@@ -27,7 +34,9 @@ class WallpaperFragment(val wallpaper: Wallpaper) : Fragment() {
             layoutParams.width = previewSize.x
             layoutParams.height = previewSize.y
         }
-        binding.txtMainWallpaperName.text = wallpaper.wallpaperName
+
+//        Log.d("TimeStamp", wallpaper.getDateTime().toString())
+        binding.txtMainCreateDate.text = wallpaper.getDateTime().format(DateTimeFormatter.ofPattern("추가된 날짜 : yyyy.MM.dd"))
 
         return binding.root
     }

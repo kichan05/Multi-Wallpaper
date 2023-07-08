@@ -13,7 +13,7 @@ import dev.kichan.multiwallpaper.ui.LoadingDialog
 import dev.kichan.multiwallpaper.ExtraKey
 import dev.kichan.multiwallpaper.R
 import dev.kichan.multiwallpaper.ui.UiUtil
-import dev.kichan.multiwallpaper.ui.main.Wallpaper
+import dev.kichan.multiwallpaper.model.data.Wallpaper
 import dev.kichan.multiwallpaper.databinding.ActivityAddWallpaperBinding
 import dev.kichan.multiwallpaper.model.db.WallpaperDataBase
 import kotlinx.coroutines.*
@@ -62,8 +62,8 @@ class AddWallpaperActivity : AppCompatActivity() {
     }
 
     private val clickSaveWallpaper: (View) -> Unit = { v ->
-        val name = binding.edtAddWallpaperWallpaperName.text.toString()
-        val wallpaper = Wallpaper(wallpaperName = name, wallpaper = selectWallpaper)
+//        val name = binding.edtAddWallpaperWallpaperName.text.toString()
+        val wallpaper = Wallpaper(wallpaper = selectWallpaper)
 
 
         val dialog = LoadingDialog().apply {
