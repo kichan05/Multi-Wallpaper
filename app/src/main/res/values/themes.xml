@@ -32,7 +32,7 @@
         <item name="android:spotShadowAlpha">0.5</item>
         <item name="android:textViewStyle">@style/txt_style</item>
         <item name="android:buttonStyle">@style/btn_main_style</item>
-<!--        <item name="editTextStyle">@style/edt_style</item>-->
+        <!--        <item name="editTextStyle">@style/edt_style</item>-->
     </style>
 
     <style name="edt_style" parent="txt_style">
@@ -47,5 +47,20 @@
 
         <item name="android:paddingVertical">16dp</item>
         <item name="android:paddingHorizontal">20dp</item>
+    </style>
+
+    <style name="Theme.MultiWallpaper.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
+        <!-- Radius of the outer bound of widgets to make the rounded corners -->
+        <item name="appWidgetRadius">16dp</item>
+        <!--
+        Radius of the inner view's bound of widgets to make the rounded corners.
+        It needs to be 8dp or less than the value of appWidgetRadius
+        -->
+        <item name="appWidgetInnerRadius">8dp</item>
+    </style>
+
+    <style name="Theme.MultiWallpaper.AppWidgetContainer" parent="Theme.MultiWallpaper.AppWidgetContainerParent">
+        <!-- Apply padding to avoid the content of the widget colliding with the rounded corners -->
+        <item name="appWidgetPadding">16dp</item>
     </style>
 </resources>

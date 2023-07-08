@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.heechan.multiwallpaper'
+    namespace 'dev.kichan.multiwallpaper'
     compileSdk 33
 
     defaultConfig {
@@ -39,6 +39,9 @@ android {
     }
     dataBinding{
         enable true
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 

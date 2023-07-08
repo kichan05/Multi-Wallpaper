@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.heechan.multiwallpaper.databinding.DialogLoadingBinding
+import dev.kichan.multiwallpaper.databinding.DialogLoadingBinding
 
 class LoadingDialog() : DialogFragment() {
     private lateinit var binding: DialogLoadingBinding

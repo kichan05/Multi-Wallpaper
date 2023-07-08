@@ -10,8 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.room.Room
 import com.heechan.membeder.ui.view.dialog.LoadingDialog
-import com.heechan.multiwallpaper.R
-import com.heechan.multiwallpaper.databinding.ActivityAddWallpaperBinding
+import dev.kichan.multiwallpaper.databinding.ActivityAddWallpaperBinding
 import dev.kichan.multiwallpaper.model.db.WallpaperDataBase
 import kotlinx.coroutines.*
 import java.io.InputStream

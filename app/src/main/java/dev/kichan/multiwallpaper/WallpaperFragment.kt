@@ -6,8 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.heechan.multiwallpaper.R
-import com.heechan.multiwallpaper.databinding.FragmentWallpaperBinding
+import dev.kichan.multiwallpaper.databinding.FragmentWallpaperBinding
 
 class WallpaperFragment(val wallpaper: Wallpaper) : Fragment() {
     lateinit var binding : FragmentWallpaperBinding
@@ -17,8 +16,6 @@ class WallpaperFragment(val wallpaper: Wallpaper) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_wallpaper, container, false)
-
-//        wallpaper = arguments?.getSerializable(KEY_ONBOARD) as Wallpaper
 
         binding.imgMainWallpaper.run {
             setImageBitmap(wallpaper.wallpaper)
