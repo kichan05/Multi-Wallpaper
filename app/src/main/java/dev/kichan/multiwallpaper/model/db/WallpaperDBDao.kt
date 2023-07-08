@@ -1,9 +1,6 @@
 package dev.kichan.multiwallpaper.model.db
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import dev.kichan.multiwallpaper.model.data.Wallpaper
 
 @Dao
@@ -22,4 +19,7 @@ interface WallpaperDBDao {
 
     @Update
     fun update(wallpaper: Wallpaper)
+
+    @Delete
+    fun delete(wallpaper: Wallpaper)
 }

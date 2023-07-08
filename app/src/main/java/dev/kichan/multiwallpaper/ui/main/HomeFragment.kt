@@ -2,31 +2,24 @@ package dev.kichan.multiwallpaper.ui.main
 
 import android.app.WallpaperManager
 import android.content.Intent
-import android.content.res.Resources.Theme
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.databinding.DataBindingUtil
 import androidx.room.Room
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.kichan.multiwallpaper.BaseFragment
 import dev.kichan.multiwallpaper.ExtraKey
 import dev.kichan.multiwallpaper.R
-import dev.kichan.multiwallpaper.databinding.ActivityMainBinding
 import dev.kichan.multiwallpaper.databinding.FragmentHomeBinding
 import dev.kichan.multiwallpaper.model.data.Wallpaper
 import dev.kichan.multiwallpaper.model.db.WallpaperDataBase
 import dev.kichan.multiwallpaper.ui.LoadingDialog
 import dev.kichan.multiwallpaper.ui.ViewPagerAdapter
-import dev.kichan.multiwallpaper.ui.addWallpaper.AddWallpaperActivity
+import dev.kichan.multiwallpaper.ui.add.AddWallpaperActivity
+import dev.kichan.multiwallpaper.ui.remove.RemoveWallpaperActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.properties.Delegates
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private var wallpaperData: MutableList<Wallpaper> = mutableListOf()
@@ -48,11 +41,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         super.onStart()
 
         binding.run {
-            btnMainSetWallpaper.setOnClickListener(clickSetWallpaper)
-            btnMainAddWallpaper.setOnClickListener(clickAddWallpaper)
-            btnMainOpenOption.setOnClickListener(clickOption)
+            btnMainOpenOption.setOnClickListener(clickOption) // 옵션 열기
+            btnMainSetWallpaper.setOnClickListener(clickSetWallpaper) // 배경화면 설정
+            btnMainAddWallpaper.setOnClickListener(clickAddWallpaper) // 배경화면 추가
+            btnMainDeleteWallpaper.setOnClickListener(clickRemoveWallpaper) // 배경화면 삭제
         }
 
+        closeOption()
         updateData()
         setViewPagerPreView()
     }
@@ -94,13 +89,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
     private val clickSetWallpaper: (View) -> Unit = { v ->
+        val dialog = LoadingDialog().apply {
+            show(childFragmentManager, "AA")
+        }
+
         val wallpaperIndex = binding.vpMain.currentItem
         WallpaperManager.getInstance(context).setBitmap(wallpaperData[wallpaperIndex].wallpaper)
 
-//        val dialog = LoadingDialog().apply {
-//            show(fragmentManager, "AA")
-//        }
-//        dialog.dismiss()
+        dialog.dismiss()
 
         val launcher = Intent(Intent.ACTION_MAIN)
         launcher.addCategory(Intent.CATEGORY_HOME)
@@ -110,22 +106,36 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private val clickOption: (View) -> Unit = {
         if (it is FloatingActionButton) {
-            if(isOptionOpen){
-                binding.btnMainDeleteWallpaper.visibility = View.INVISIBLE
-                binding.btnMainAddWallpaper.visibility = View.INVISIBLE
-                it.setImageResource(R.drawable.ic_option)
+            if (isOptionOpen) {
+                closeOption()
+            } else {
+                openOption()
             }
-            else{
-                binding.btnMainDeleteWallpaper.visibility = View.VISIBLE
-                binding.btnMainAddWallpaper.visibility = View.VISIBLE
-                it.setImageResource(R.drawable.ic_close)
-            }
-
-            isOptionOpen = !isOptionOpen
         }
     }
 
-    private val clickAddWallpaper: (View) -> Unit = { v ->
+    private fun closeOption() = binding.run {
+        btnMainDeleteWallpaper.visibility = View.INVISIBLE
+        btnMainAddWallpaper.visibility = View.INVISIBLE
+        btnMainOpenOption.setImageResource(R.drawable.ic_option)
+
+        isOptionOpen = false
+    }
+
+    private fun openOption() = binding.run {
+        btnMainDeleteWallpaper.visibility = View.VISIBLE
+        btnMainAddWallpaper.visibility = View.VISIBLE
+        btnMainOpenOption.setImageResource(R.drawable.ic_close)
+
+        isOptionOpen = true
+    }
+
+    private val clickAddWallpaper: (View) -> Unit = {
         getImage.launch("image/*")
+    }
+
+    private val clickRemoveWallpaper: (View) -> Unit = {
+        val intent = Intent(context, RemoveWallpaperActivity::class.java)
+        startActivity(intent)
     }
 }

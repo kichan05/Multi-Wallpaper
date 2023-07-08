@@ -1,4 +1,4 @@
-package dev.kichan.multiwallpaper.ui.addWallpaper
+package dev.kichan.multiwallpaper.ui.add
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -53,7 +53,7 @@ class AddWallpaperActivity : AppCompatActivity() {
             setImageBitmap(selectWallpaper)
             clipToOutline = true
 
-            val previewSize = UiUtil.getPreViewImageSize(this@AddWallpaperActivity, 40)
+            val previewSize = UiUtil.getPreViewImageSize(this@AddWallpaperActivity, 80)
             layoutParams.width = previewSize.x
             layoutParams.height = previewSize.y
         }

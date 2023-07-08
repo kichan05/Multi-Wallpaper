@@ -35,7 +35,7 @@
     </style>
 
     <style name="header_title_type" parent="txt_style">
-        <item name="android:textFontWeight">700</item>
+        <item name="android:textFontWeight">500</item>
         <item name="android:textSize">20sp</item>
     </style>
 </resources>

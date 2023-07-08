@@ -10,32 +10,50 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="dev.kichan.multiwallpaper.ui.add.AddWallpaperActivity">
+        tools:context=".ui.remove.RemoveWallpaperActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_removeWallpaper"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:background="?attr/weight_bg_color"
+            android:elevation="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:logo="@drawable/ic_back"
+
+            app:title="다중 배경 화면"
+            app:titleMarginStart="24dp"
+            app:titleTextAppearance="@style/header_title_type" />
 
 
         <ImageView
-            android:id="@+id/img_addWallpaper_preview"
+            android:id="@+id/img_removeWallpaper_preview"
             android:layout_width="220dp"
             android:layout_height="400dp"
             android:background="@drawable/sh_phone_preview"
             android:scaleType="centerCrop"
 
             android:src="@drawable/ryo"
-            app:layout_constraintBottom_toTopOf="@id/btn_addWallpaper_save"
+            app:layout_constraintBottom_toTopOf="@id/btn_removeWallpaper_remove"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tb_removeWallpaper"
             />
 
         <Button
-            android:id="@+id/btn_addWallpaper_save"
+            android:id="@+id/btn_removeWallpaper_remove"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/ui_padding_horizontal"
             android:layout_marginBottom="@dimen/ui_padding_vertical"
 
-            android:text="저장"
+            android:text="삭제"
+            android:backgroundTint="@color/red"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
