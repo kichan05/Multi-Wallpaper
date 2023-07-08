@@ -18,13 +18,13 @@ import java.util.Locale
 @Entity
 data class Wallpaper(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val wallpaper: Bitmap? = null,
+    var wallpaper: Bitmap? = null,
     @ColumnInfo("create_time_stamp")
     val createTimeStamp: String = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
 //    @ColumnInfo("wallpaper_name")
 //    val wallpaperName: String,
 ) : Serializable {
-    constructor(wallpaperName: String, @DrawableRes imageDrawable: Int, context: Context) : this(
+    constructor(@DrawableRes imageDrawable: Int, context: Context) : this(
 //        wallpaperName = wallpaperName,
         wallpaper = BitmapFactory.decodeResource(
             context.resources,
