@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="dev.kichan.multiwallpaper.ui.main.MainActivity">
+
+        <LinearLayout
+            android:id="@+id/layout_main_null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+
+            android:orientation="vertical"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+
+                android:src="@drawable/ic_find" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:gravity="center"
+                android:text="저장된 배경화면이 없어요\n아래 + 버튼을 눌러서 배경화면을 추가해보세요."
+                android:textFontWeight="600"
+
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_main"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            app:layout_constraintBottom_toTopOf="@id/btn_main_setWallpaper"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_main_setWallpaper"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginHorizontal="@dimen/ui_padding_horizontal"
+
+            android:layout_marginBottom="@dimen/ui_padding_vertical"
+            android:text="배경화면으로 설정하기"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_main_addWallpaper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="@dimen/ui_padding_vertical"
+            android:backgroundTint="@color/blue_300"
+            android:elevation="0dp"
+
+            android:src="@drawable/ic_add"
+            app:borderWidth="0dp"
+
+            app:layout_constraintBottom_toTopOf="@id/btn_main_setWallpaper"
+            app:layout_constraintEnd_toEndOf="@id/btn_main_setWallpaper" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
