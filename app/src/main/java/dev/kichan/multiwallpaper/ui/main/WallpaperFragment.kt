@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import dev.kichan.multiwallpaper.R
-import dev.kichan.multiwallpaper.ui.UiUtill
+import dev.kichan.multiwallpaper.ui.UiUtil
 import dev.kichan.multiwallpaper.databinding.FragmentWallpaperBinding
 
 class WallpaperFragment(val wallpaper: Wallpaper) : Fragment() {
@@ -23,7 +23,7 @@ class WallpaperFragment(val wallpaper: Wallpaper) : Fragment() {
             setImageBitmap(wallpaper.wallpaper)
             clipToOutline = true
 
-            val previewSize = UiUtill.getPreViewImageSize(requireActivity(), 90)
+            val previewSize = UiUtil.getPreViewImageSize(requireActivity(), 90)
             layoutParams.width = previewSize.x
             layoutParams.height = previewSize.y
         }
