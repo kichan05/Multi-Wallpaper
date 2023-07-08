@@ -13,7 +13,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
 
         <!--    Color state    -->
-        <item name="weight_bg_color">#141414</item>
+        <item name="weight_bg_color">#1B1B1B</item>
         <item name="bg_color">#1B1B1B</item>
 
         <item name="txt_color">#cbcbcb</item>

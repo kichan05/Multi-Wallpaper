@@ -13,7 +13,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
 
         <!--    Color state    -->
-        <item name="weight_bg_color">#ffffff</item>
+        <item name="weight_bg_color">#F7F4F4</item>
         <item name="bg_color">#F4F4F4</item>
 
         <item name="txt_color">@color/black</item>
@@ -33,20 +33,6 @@
         <item name="android:textViewStyle">@style/txt_style</item>
         <item name="android:buttonStyle">@style/btn_main_style</item>
         <!--        <item name="editTextStyle">@style/edt_style</item>-->
-    </style>
-
-    <style name="edt_style" parent="txt_style">
-        <item name="android:textColor">?attr/edt_txt_color</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textFontWeight">400</item>
-
-        <item name="android:background">@drawable/sh_radious_10</item>
-        <item name="android:backgroundTint">?attr/edt_bg_color</item>
-
-        <item name="android:gravity">center_vertical</item>
-
-        <item name="android:paddingVertical">16dp</item>
-        <item name="android:paddingHorizontal">20dp</item>
     </style>
 
     <style name="Theme.MultiWallpaper.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">

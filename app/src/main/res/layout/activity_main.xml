@@ -7,6 +7,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_main"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            app:title="다중 배경 화면"
+            app:titleTextAppearance="@style/header_title_type"
+            app:logo="@drawable/ic_logo_header"
+
+            android:elevation="1dp"
+
+            android:background="?attr/weight_bg_color"
+
+            app:titleMarginStart="24dp"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
         <fragment
             android:id="@+id/fragment_main"
             android:layout_width="0dp"
@@ -16,7 +36,7 @@
             app:defaultNavHost="true"
             app:navGraph="@navigation/nv_main"
 
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tb_main"
             app:layout_constraintBottom_toTopOf="@id/bnv_main"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

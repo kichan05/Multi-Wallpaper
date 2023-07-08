@@ -29,15 +29,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/suit"
             android:text="추가된 날짜 : 2023년 7월 8일"
-            android:textFontWeight="200"
             android:textColor="@color/black"
+
+            android:textFontWeight="200"
 
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/img_main_wallpaper"
+            app:layout_constraintStart_toStartOf="@id/img_main_wallpaper"
             app:layout_constraintTop_toBottomOf="@id/img_main_wallpaper" />
 
 

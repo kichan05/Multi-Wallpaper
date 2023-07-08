@@ -21,12 +21,12 @@
             android:scaleType="centerCrop"
 
             android:src="@drawable/ryo"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btn_addWallpaper_save"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            />
 
         <Button
             android:id="@+id/btn_addWallpaper_save"

@@ -53,7 +53,7 @@ class AddWallpaperActivity : AppCompatActivity() {
             setImageBitmap(selectWallpaper)
             clipToOutline = true
 
-            val previewSize = UiUtil.getPreViewImageSize(this@AddWallpaperActivity, 150)
+            val previewSize = UiUtil.getPreViewImageSize(this@AddWallpaperActivity, 40)
             layoutParams.width = previewSize.x
             layoutParams.height = previewSize.y
         }
