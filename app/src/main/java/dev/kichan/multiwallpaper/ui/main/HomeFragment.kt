@@ -61,14 +61,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             val result = db.wallpaperDao().getAll()
 
             withContext(Dispatchers.Main) {
-                wallpaperData.addAll(result)
-                wallpaperData = wallpaperData.distinctBy { it.id } as MutableList<Wallpaper>
+                wallpaperData.clear()
+                wallpaperData =
+                    result as MutableList<Wallpaper>//wallpaperData.distinctBy { it.id } as MutableList<Wallpaper>
 
                 if (wallpaperData.size == 0) {
                     binding.layoutMainNull.visibility = View.VISIBLE
                     binding.btnMainSetWallpaper.visibility = View.INVISIBLE
                     return@withContext
                 }
+
+                binding.btnMainSetWallpaper.visibility = View.VISIBLE
 
                 binding.vpMain.adapter = ViewPagerAdapter(
                     requireActivity(),
@@ -102,7 +105,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
     private val clickOption: (View) -> Unit = {
-
         if (it is FloatingActionButton) {
             if (isOptionOpen) {
                 closeOption()
