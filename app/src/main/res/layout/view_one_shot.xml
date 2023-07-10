@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        tools:showIn="@layout/fragment_oneshot"
+        android:padding="8dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/txt_oneShot_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="원샷 1"
+            android:textSize="20sp"
+            android:textFontWeight="500"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <ImageView
+            android:id="@+id/img_oneShot_preView"
+            android:layout_width="120dp"
+            android:layout_height="200dp"
+
+            android:background="@drawable/sh_phone_preview"
+            android:src="@drawable/nijika"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+
+            android:layout_margin="8dp"
+
+            app:layout_constraintTop_toBottomOf="@id/txt_oneShot_title"
+            app:layout_constraintStart_toStartOf="@id/txt_oneShot_title"
+            />
+
+        <Button
+            android:id="@+id/btn_oneShot_setOneShot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="적용하기"
+            android:textSize="22sp"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="8dp"
+
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+
+            android:drawableStart="@drawable/ic_rocket"
+            android:drawableTint="?attr/btn_main_txt_color"
+
+            android:drawablePadding="4dp"
+
+            app:layout_constraintTop_toTopOf="@id/btn_oneShot_setWallpaper"
+            app:layout_constraintEnd_toStartOf="@id/btn_oneShot_setWallpaper"
+            />
+
+        <Button
+            android:id="@+id/btn_oneShot_setWallpaper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="적용하기"
+            android:textSize="22sp"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="8dp"
+
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+
+            android:drawableStart="@drawable/ic_rocket"
+            android:drawableTint="?attr/btn_main_txt_color"
+
+            android:drawablePadding="4dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+        

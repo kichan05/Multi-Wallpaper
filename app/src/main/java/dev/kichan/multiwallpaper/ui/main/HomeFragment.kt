@@ -3,9 +3,11 @@ package dev.kichan.multiwallpaper.ui.main
 import android.app.WallpaperManager
 import android.content.Intent
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.room.Room
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import dev.kichan.multiwallpaper.BaseFragment
 import dev.kichan.multiwallpaper.ExtraKey
 import dev.kichan.multiwallpaper.R
@@ -16,10 +18,7 @@ import dev.kichan.multiwallpaper.ui.LoadingDialog
 import dev.kichan.multiwallpaper.ui.ViewPagerAdapter
 import dev.kichan.multiwallpaper.ui.add.AddWallpaperActivity
 import dev.kichan.multiwallpaper.ui.remove.RemoveWallpaperActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private var wallpaperData: MutableList<Wallpaper> = mutableListOf()
@@ -89,20 +88,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
     private val clickSetWallpaper: (View) -> Unit = { v ->
-        val dialog = LoadingDialog().apply {
-            show(childFragmentManager, "AA")
+        CoroutineScope(Dispatchers.Main).launch {
+            val dialog = LoadingDialog()
+            dialog.show(parentFragmentManager, "Loading")
+
+            val wallpaperIndex = binding.vpMain.currentItem
+            WallpaperManager.getInstance(context).setBitmap(wallpaperData[wallpaperIndex].wallpaper)
+
+            delay(500)
+
+            dialog.dismiss()
+            Snackbar.make(binding.root, "배경 설정 완료", Snackbar.LENGTH_SHORT).show()
         }
-
-        val wallpaperIndex = binding.vpMain.currentItem
-        WallpaperManager.getInstance(context).setBitmap(wallpaperData[wallpaperIndex].wallpaper)
-
-        dialog.dismiss()
-
-        val launcher = Intent(Intent.ACTION_MAIN)
-        launcher.addCategory(Intent.CATEGORY_HOME)
-        startActivity(launcher)
     }
-
 
     private val clickOption: (View) -> Unit = {
         if (it is FloatingActionButton) {

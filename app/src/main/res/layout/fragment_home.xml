@@ -30,7 +30,7 @@
                 android:layout_width="300dp"
                 android:layout_height="300dp"
 
-                android:src="@drawable/ic_find" />
+                android:src="@drawable/gr_find" />
 
             <TextView
                 android:layout_width="wrap_content"

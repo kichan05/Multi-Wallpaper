@@ -8,12 +8,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
-import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.LocalTime
 import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 @Entity
 data class Wallpaper(
@@ -23,15 +19,17 @@ data class Wallpaper(
     val createTimeStamp: String = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
     @ColumnInfo("one_shot")
     var oneShot : Int? = null
+
 //    @ColumnInfo("wallpaper_name")
 //    val wallpaperName: String,
 ) : Serializable {
     constructor(@DrawableRes imageDrawable: Int, context: Context) : this(
-//        wallpaperName = wallpaperName,
         wallpaper = BitmapFactory.decodeResource(
             context.resources,
             imageDrawable
         )!!
+
+//        wallpaperName = wallpaperName,
     )
 
     fun getDateTime(): LocalDateTime = LocalDateTime.parse(createTimeStamp, DateTimeFormatter.ISO_LOCAL_DATE_TIME)
