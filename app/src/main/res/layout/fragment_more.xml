@@ -36,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
-            android:text="앱 정보"
+            android:text="개발자 후원"
 
             android:layout_marginTop="12dp"
 
