@@ -102,6 +102,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
     private val clickOption: (View) -> Unit = {
+
         if (it is FloatingActionButton) {
             if (isOptionOpen) {
                 closeOption()

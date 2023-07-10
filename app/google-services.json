@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "604633358670",
+    "project_id": "multi-wallpaper-bfa9e",
+    "storage_bucket": "multi-wallpaper-bfa9e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604633358670:android:a3ce1bd805d8a33ff8fe1f",
+        "android_client_info": {
+          "package_name": "dev.kichan.multiwallpaper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "604633358670-e892eik3nh053b3vvk7h1uac7efh9j2d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDygBiqw9is8wQO9U2xOoqE_vjjCycMs-0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "604633358670-e892eik3nh053b3vvk7h1uac7efh9j2d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

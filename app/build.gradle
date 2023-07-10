@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id "com.google.gms.google-services"
+    id "com.google.firebase.crashlytics"
 }
 
 android {
@@ -9,7 +11,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.heechan.multiwallpaper"
+        applicationId "dev.kichan.multiwallpaper"
         minSdk 28
         targetSdk 33
         versionCode 1
@@ -46,6 +48,12 @@ android {
 }
 
 dependencies {
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.1.1"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-crashlytics-ktx")
+
+
     // Room
     implementation 'androidx.room:room-runtime:2.5.2'
     kapt 'androidx.room:room-compiler:2.5.2'
