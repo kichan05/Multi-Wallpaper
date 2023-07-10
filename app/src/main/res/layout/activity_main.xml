@@ -49,7 +49,7 @@
 
             app:menu="@menu/menu_main"
 
-            android:background="?attr/weight_bg_color"
+            android:background="@drawable/sh_bottom_nav"
             app:itemIconTint="@drawable/se_main_bnv_color"
             app:itemTextColor="@drawable/se_main_bnv_color"
             app:labelVisibilityMode="labeled"

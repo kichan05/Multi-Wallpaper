@@ -13,8 +13,9 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
 
         <!--    Color state    -->
-        <item name="weight_bg_color">#1B1B1B</item>
+        <item name="weight_bg_color">#232222</item>
         <item name="bg_color">#1B1B1B</item>
+        <item name="bottom_nav_border_color">#2B2B2B</item>
 
         <item name="txt_color">#cbcbcb</item>
 

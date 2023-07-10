@@ -15,6 +15,7 @@
         <!--    Color state    -->
         <item name="weight_bg_color">#F7F4F4</item>
         <item name="bg_color">#F4F4F4</item>
+        <item name="bottom_nav_border_color">@color/blue_100</item>
 
         <item name="txt_color">@color/black</item>
 
