@@ -20,8 +20,12 @@ class LoadingDialog() : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DialogLoadingBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    companion object {
+        const val TAG = "LoadingDialog"
     }
 }

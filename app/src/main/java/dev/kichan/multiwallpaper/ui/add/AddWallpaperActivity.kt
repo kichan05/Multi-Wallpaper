@@ -24,6 +24,8 @@ class AddWallpaperActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddWallpaperBinding
     lateinit var selectWallpaper: Bitmap
 
+    private val dialog = LoadingDialog()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView<ActivityAddWallpaperBinding?>(
@@ -65,10 +67,7 @@ class AddWallpaperActivity : AppCompatActivity() {
 //        val name = binding.edtAddWallpaperWallpaperName.text.toString()
         val wallpaper = Wallpaper(wallpaper = selectWallpaper)
 
-
-        val dialog = LoadingDialog().apply {
-            show(supportFragmentManager, "AA")
-        }
+        dialog.show(supportFragmentManager, LoadingDialog.TAG)
 
         CoroutineScope(Dispatchers.IO).launch {
             db.wallpaperDao().insert(wallpaper)

@@ -33,7 +33,6 @@
         <item name="android:spotShadowAlpha">0.5</item>
         <item name="android:textViewStyle">@style/txt_style</item>
         <item name="android:buttonStyle">@style/btn_main_style</item>
-        <!--        <item name="editTextStyle">@style/edt_style</item>-->
     </style>
 
     <style name="Theme.MultiWallpaper.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
