@@ -16,7 +16,7 @@
     <string name="layout_more_donation_btn">개발자 후원</string>
     <string name="layout_oneShot_developTitle">원샷 기능 개발중</string>
     <string name="layout_oneShot_developDescription">홈 화면 위젯에서 배경화면을\n빠르게 변경할 수 있는 기능이에요.</string>
-    <string name="layout_wallpaper_addDate">추가된 날짜 : yyyy.MM.dd</string>
+    <string name="layout_wallpaper_addDate">추가된 날짜 : %s</string>
     <string name="layout_selectScreen_home">홈 화면</string>
     <string name="layout_selectScreen_lock">잠금화면</string>
     <string name="layout_selectScreen_homeAndLock">홈화면 + 잠금화면</string>

@@ -1,22 +1,22 @@
 <resources>
-    <string name="app_name">다중 배경화면</string>
+    <string name="app_name">Multi Wallpaper</string>
 
-    <string name="menu_main_home">홈</string>
-    <string name="menu_main_oneshot">원샷</string>
-    <string name="menu_main_more">더보기</string>
-    <string name="layout_add_wallpaper_save_btn">저장</string>
-    <string name="layout_main_tb_title">다중 배경 화면</string>
-    <string name="layout_remove_wallpaper_tb_title">다중 배경 화면</string>
-    <string name="layout_remove_wallpaper_btn_remove">삭제</string>
-    <string name="layout_select_wallpaper_select_btn">선택</string>
-    <string name="layout_home_empty_title">저장된 배경화면이 없어요</string>
-    <string name="layout_home_empty_discripion">아래 + 버튼을 눌러서\n배경화면을 추가해보세요.</string>
-    <string name="layout_home_setWallpaper_btn">배경화면으로 설정하기</string>
-    <string name="layout_more_donation_btn">개발자 후원</string>
-    <string name="layout_oneShot_developTitle">원샷 기능 개발중</string>
-    <string name="layout_oneShot_developDescription">홈 화면 위젯에서 배경화면을\n빠르게 변경할 수 있는 기능이에요.</string>
-    <string name="layout_wallpaper_addDate">추가된 날짜 : yyyy.MM.dd</string>
-    <string name="layout_selectScreen_home">홈 화면</string>
-    <string name="layout_selectScreen_lock">잠금화면</string>
-    <string name="layout_selectScreen_homeAndLock">홈화면 + 잠금화면</string>
+    <string name="menu_main_home">Home</string>
+    <string name="menu_main_oneshot">Oneshot</string>
+    <string name="menu_main_more">More</string>
+    <string name="layout_add_wallpaper_save_btn">Save</string>
+    <string name="layout_main_tb_title">Multi Wallpaper</string>
+    <string name="layout_remove_wallpaper_tb_title">Multi Wallpaper</string>
+    <string name="layout_remove_wallpaper_btn_remove">Remove</string>
+    <string name="layout_select_wallpaper_select_btn">Select</string>
+    <string name="layout_home_empty_title">No saved wallpaper yet</string>
+    <string name="layout_home_empty_discripion">Tap the + button below to\nadd a wallpaper.</string>
+    <string name="layout_home_setWallpaper_btn">Set as wallpaper</string>
+    <string name="layout_more_donation_btn">Support Developer</string>
+    <string name="layout_oneShot_developTitle">Developing Oneshot function</string>
+    <string name="layout_oneShot_developDescription">This is a feature that allows you to quickly change the wallpaper\non the home screen widget.</string>
+    <string name="layout_wallpaper_addDate">Added date : yyyy.MM.dd</string>
+    <string name="layout_selectScreen_home">Home screen</string>
+    <string name="layout_selectScreen_lock">Lock screen</string>
+    <string name="layout_selectScreen_homeAndLock">Home + Lock screen</string>
 </resources>

@@ -16,7 +16,7 @@
     <string name="layout_more_donation_btn">Support Developer</string>
     <string name="layout_oneShot_developTitle">Developing Oneshot function</string>
     <string name="layout_oneShot_developDescription">This is a feature that allows you to quickly change the wallpaper\non the home screen widget.</string>
-    <string name="layout_wallpaper_addDate">Added date : yyyy/MM/dd</string>
+    <string name="layout_wallpaper_addDate">Added date : %s</string>
     <string name="layout_selectScreen_home">Home screen</string>
     <string name="layout_selectScreen_lock">Lock screen</string>
     <string name="layout_selectScreen_homeAndLock">Home + Lock screen</string>

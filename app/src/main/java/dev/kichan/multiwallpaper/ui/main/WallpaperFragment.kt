@@ -35,8 +35,11 @@ class WallpaperFragment(val wallpaper: Wallpaper) : Fragment() {
             layoutParams.height = previewSize.y
         }
 
-        binding.txtMainCreateDate.text = wallpaper.getDateTime()
-            .format(DateTimeFormatter.ofPattern(resources.getString(R.string.layout_wallpaper_addDate)))
+        Log.e("test", resources.getString(R.string.layout_wallpaper_addDate))
+
+        val dateFormat = wallpaper.getDateTime().format(DateTimeFormatter.ofPattern("yyyy.MM.dd"))
+        binding.txtMainCreateDate.text = String.format(resources.getString(R.string.layout_wallpaper_addDate), dateFormat)
+
 
         return binding.root
     }
