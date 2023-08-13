@@ -12,7 +12,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
-            app:title="다중 배경 화면"
+            app:title="@string/layout_main_tb_title"
             app:titleTextAppearance="@style/header_title_type"
             app:logo="@drawable/ic_logo_header"
 

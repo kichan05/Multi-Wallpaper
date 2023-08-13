@@ -32,7 +32,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/suit"
-            android:text="추가된 날짜 : 2023년 7월 8일"
+            android:text="@string/layout_wallpaper_addDate"
             android:textColor="@color/black"
 
             android:textFontWeight="200"

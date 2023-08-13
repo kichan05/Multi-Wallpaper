@@ -31,7 +31,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
-            android:text="선택"
+            android:text="@string/layout_select_wallpaper_select_btn"
+
+            android:layout_marginHorizontal="@dimen/ui_padding_horizontal"
+            android:layout_marginBottom="@dimen/ui_padding_vertical"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -35,7 +35,7 @@
             android:layout_marginHorizontal="@dimen/ui_padding_horizontal"
             android:layout_marginBottom="@dimen/ui_padding_vertical"
 
-            android:text="저장"
+            android:text="@string/layout_add_wallpaper_save_btn"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -48,6 +48,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             btnMainSetWallpaper.setOnClickListener(clickSetWallpaper) // 배경화면 설정
             btnMainAddWallpaper.setOnClickListener(clickAddWallpaper) // 배경화면 추가
             btnMainDeleteWallpaper.setOnClickListener(clickRemoveWallpaper) // 배경화면 삭제
+
+//            dotHome.attachTo(vpMain)
         }
 
         closeOption()

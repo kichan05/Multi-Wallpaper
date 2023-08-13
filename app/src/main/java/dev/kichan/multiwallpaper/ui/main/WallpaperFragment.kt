@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import dev.kichan.multiwallpaper.R
@@ -16,14 +15,15 @@ import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeFormatterBuilder
+import android.view.View
 
 class WallpaperFragment(val wallpaper: Wallpaper) : Fragment() {
-    lateinit var binding : FragmentWallpaperBinding
+    lateinit var binding: FragmentWallpaperBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_wallpaper, container, false)
 
         binding.imgMainWallpaper.run {
@@ -35,8 +35,8 @@ class WallpaperFragment(val wallpaper: Wallpaper) : Fragment() {
             layoutParams.height = previewSize.y
         }
 
-//        Log.d("TimeStamp", wallpaper.getDateTime().toString())
-        binding.txtMainCreateDate.text = wallpaper.getDateTime().format(DateTimeFormatter.ofPattern("추가된 날짜 : yyyy.MM.dd"))
+        binding.txtMainCreateDate.text = wallpaper.getDateTime()
+            .format(DateTimeFormatter.ofPattern(resources.getString(R.string.layout_wallpaper_addDate)))
 
         return binding.root
     }

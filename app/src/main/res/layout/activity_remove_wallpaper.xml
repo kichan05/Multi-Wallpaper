@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:logo="@drawable/ic_back"
 
-            app:title="다중 배경 화면"
+            app:title="@string/layout_remove_wallpaper_tb_title"
             app:titleMarginStart="24dp"
             app:titleTextAppearance="@style/header_title_type" />
 
@@ -52,7 +52,7 @@
             android:layout_marginHorizontal="@dimen/ui_padding_horizontal"
             android:layout_marginBottom="@dimen/ui_padding_vertical"
 
-            android:text="삭제"
+            android:text="@string/layout_remove_wallpaper_btn_remove"
             android:backgroundTint="@color/red"
 
             app:layout_constraintBottom_toBottomOf="parent"

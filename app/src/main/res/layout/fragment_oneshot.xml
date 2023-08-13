@@ -40,7 +40,7 @@
 
                 android:layout_marginTop="12dp"
 
-                android:text="원샷 기능 개발중"
+                android:text="@string/layout_oneShot_developTitle"
                 android:textFontWeight="400"
                 android:textSize="20sp" />
 
@@ -51,7 +51,7 @@
                 android:layout_marginTop="12dp"
                 android:gravity="center"
 
-                android:text="홈 화면 위젯에서 배경화면을\n빠르게 변경할 수 있는 기능이에요."
+                android:text="@string/layout_oneShot_developDescription"
                 android:textColor="#7A7A7A"
                 android:textFontWeight="400"
                 />

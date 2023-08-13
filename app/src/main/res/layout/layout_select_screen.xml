@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:text="홈 화면"
+            android:text="@string/layout_selectScreen_home"
             android:textColor="?attr/txt_color"
             android:textSize="20sp"
             android:textFontWeight="300"
@@ -27,7 +27,7 @@
             android:background="?android:attr/selectableItemBackground"
 
             android:paddingVertical="9dp"
-            android:paddingHorizontal="6dp"
+            android:paddingHorizontal="8dp"
             />
 
         <TextView
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:text="잠금화면"
+            android:text="@string/layout_selectScreen_lock"
             android:textColor="?attr/txt_color"
             android:textSize="20sp"
             android:textFontWeight="300"
@@ -43,7 +43,7 @@
             android:background="?android:attr/selectableItemBackground"
 
             android:paddingVertical="9dp"
-            android:paddingHorizontal="6dp"
+            android:paddingHorizontal="8dp"
             />
 
         <TextView
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:text="홈화면 + 잠금화면"
+            android:text="@string/layout_selectScreen_homeAndLock"
             android:textColor="?attr/txt_color"
             android:textSize="20sp"
             android:textFontWeight="300"
@@ -59,7 +59,7 @@
             android:background="?android:attr/selectableItemBackground"
 
             android:paddingVertical="9dp"
-            android:paddingHorizontal="6dp"
+            android:paddingHorizontal="8dp"
             />
 
     </LinearLayout>
