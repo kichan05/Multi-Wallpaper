@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Multi Wallpaper</string>
+
+    <string name="menu_main_home">Home</string>
+    <string name="menu_main_oneshot">Oneshot</string>
+    <string name="menu_main_more">More</string>
+    <string name="layout_add_wallpaper_save_btn">Save</string>
+    <string name="layout_main_tb_title">Multi Wallpaper</string>
+    <string name="layout_remove_wallpaper_tb_title">Multi Wallpaper</string>
+    <string name="layout_remove_wallpaper_btn_remove">Remove</string>
+    <string name="layout_select_wallpaper_select_btn">Select</string>
+    <string name="layout_home_empty_title">No saved wallpaper yet</string>
+    <string name="layout_home_empty_discripion">Tap the + button below to\nadd a wallpaper.</string>
+    <string name="layout_home_setWallpaper_btn">Set as wallpaper</string>
+    <string name="layout_more_donation_btn">Support Developer</string>
+    <string name="layout_oneShot_developTitle">Developing Oneshot function</string>
+    <string name="layout_oneShot_developDescription">This is a feature that allows you to quickly change the wallpaper\non the home screen widget.</string>
+    <string name="layout_wallpaper_addDate">Added date : yyyy/MM/dd</string>
+    <string name="layout_selectScreen_home">Home screen</string>
+    <string name="layout_selectScreen_lock">Lock screen</string>
+    <string name="layout_selectScreen_homeAndLock">Home + Lock screen</string>
+</resources>
